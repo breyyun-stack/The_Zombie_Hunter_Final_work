@@ -7,9 +7,9 @@ public class InputData : MonoBehaviour
 
     public Vector2 inputVector;
 
-    public bool isAttackBegin = false;
-
+    public bool isAttack = false;
     public bool isSprint = false;
+    public bool isReload = false;
 
     private void Awake()
     {
@@ -30,6 +30,11 @@ public class InputData : MonoBehaviour
         inputActions.Player.Sprint.started += OnSprintStarted;
         inputActions.Player.Sprint.performed += OnSprintPerformed;
         inputActions.Player.Sprint.canceled += OnSprintCanceled;
+
+        // Подписываемся на событие нажатия клавиш перезарядки
+        inputActions.Player.Reload.started += OnReloadStarted;
+        inputActions.Player.Reload.performed += OnReloadPerformed;
+        inputActions.Player.Reload.canceled += OnReloadCanceled;
     }
 
     public void OnEnable()
@@ -64,12 +69,12 @@ public class InputData : MonoBehaviour
 
     public void OnAttackPerformed(InputAction.CallbackContext context)
     {
-        isAttackBegin = true;
+        isAttack = true;
     }
 
     public void OnAttackCanceled(InputAction.CallbackContext context)
     {
-        isAttackBegin = false;
+        isAttack = false;
     }
 
     public void OnSprintStarted(InputAction.CallbackContext context)
@@ -85,5 +90,20 @@ public class InputData : MonoBehaviour
     public void OnSprintCanceled(InputAction.CallbackContext context)
     {
         isSprint = false;
+    }
+
+    public void OnReloadStarted(InputAction.CallbackContext context)
+    {
+
+    }
+
+    public void OnReloadPerformed(InputAction.CallbackContext context)
+    {
+        isReload = true;
+    }
+
+    public void OnReloadCanceled(InputAction.CallbackContext context)
+    {
+        isReload = false;
     }
 }

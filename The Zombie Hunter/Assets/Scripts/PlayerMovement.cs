@@ -3,22 +3,30 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    [SerializeField] private CinemachineCamera freeLookCamera;
-    [SerializeField] private RuntimeAnimatorController[] animatorOverride;
-    [SerializeField] private int numberCurrentAnimator = 0;
+    [SerializeField] private float _walkSpeed;
+    [SerializeField] private float _sprintSpeed;
+    [SerializeField] private CinemachineCamera _freeLookCamera;
+    [SerializeField] private RuntimeAnimatorController[] _animatorOverride;
+    [SerializeField] private GameObject[] _weapons;
+    [SerializeField] private int _numberCurrentAnimator = 0;
 
     private InputData inputData;
     private Animator animator;
     private Rigidbody rb;
     private Vector3 moveDirection;
+    private float currentSpeed;
 
     void Start()
     {
         inputData = GetComponent<InputData>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
-        animator.runtimeAnimatorController = animatorOverride[numberCurrentAnimator];
+        currentSpeed = _walkSpeed;
+
+        ResetAllWeapons();
+
+        animator.runtimeAnimatorController = _animatorOverride[_numberCurrentAnimator];
+        _weapons[_numberCurrentAnimator].SetActive(true);
     }
 
     void Update()
@@ -27,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("y", inputData.inputVector.y);
 
         AnimationSprint(inputData.isSprint);
+        AnimationAttack(inputData.isAttack);
+        AnimationReload(inputData.isReload);
     }
 
     private void FixedUpdate()
@@ -36,14 +46,22 @@ public class PlayerMovement : MonoBehaviour
         PlayerMove();
     }
 
+    private void ResetAllWeapons()
+    {
+        foreach (var weapon in _weapons)
+        {
+            weapon.SetActive(false);
+        }
+    }
+
     /// <summary>
     /// Вращение персонажа в направлении камеры
     /// </summary>
     private void RotationBehindCamera()
     {
         // Получаем направление камеры
-        Vector3 cameraForward = freeLookCamera.transform.forward;
-        Vector3 cameraRight = freeLookCamera.transform.right;
+        Vector3 cameraForward = _freeLookCamera.transform.forward;
+        Vector3 cameraRight = _freeLookCamera.transform.right;
 
         // Игнорируем вертикальную составляющую (наклон камеры вверх/вниз)
         cameraForward.y = 0;
@@ -64,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void PlayerMove()
     {
-        rb.MovePosition(rb.position + moveDirection * speed * Time.deltaTime);
+        rb.MovePosition(rb.position + moveDirection * currentSpeed * Time.deltaTime);
     }
 
     /// <summary>
@@ -73,5 +91,32 @@ public class PlayerMovement : MonoBehaviour
     private void AnimationSprint(bool isSprint)
     {
         animator.SetBool("isSprint", isSprint);
+
+        if (isSprint) 
+        { 
+            currentSpeed = _sprintSpeed; 
+        }
+        else
+        {
+            currentSpeed = _walkSpeed;
+        }
+    }
+
+    /// <summary>
+    /// Анимация атаки
+    /// </summary>
+    /// <param name="isAttack"></param>
+    private void AnimationAttack(bool isAttack)
+    {
+        animator.SetBool("isAttack", isAttack);
+    }
+
+    /// <summary>
+    /// Анимация перезарядки
+    /// </summary>
+    /// <param name="isReload"></param>
+    private void AnimationReload(bool isReload)
+    {
+        animator.SetBool("isReload", isReload);
     }
 }
