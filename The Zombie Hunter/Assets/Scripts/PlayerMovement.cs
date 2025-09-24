@@ -6,12 +6,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _walkSpeed;
     [SerializeField] private float _sprintSpeed;
     [SerializeField] private CinemachineCamera _freeLookCamera;
-    [SerializeField] private RuntimeAnimatorController[] _animatorOverride;
-    [SerializeField] private GameObject[] _weapons;
-    [SerializeField] private int _numberCurrentAnimator = 0;
 
     private InputData inputData;
-    private Animator animator;
     private Rigidbody rb;
     private Vector3 moveDirection;
     private float currentSpeed;
@@ -19,24 +15,13 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         inputData = GetComponent<InputData>();
-        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         currentSpeed = _walkSpeed;
-
-        ResetAllWeapons();
-
-        animator.runtimeAnimatorController = _animatorOverride[_numberCurrentAnimator];
-        _weapons[_numberCurrentAnimator].SetActive(true);
     }
 
     void Update()
     {
-        animator.SetFloat("x", inputData.inputVector.x);
-        animator.SetFloat("y", inputData.inputVector.y);
-
-        AnimationSprint(inputData.isSprint);
-        AnimationAttack(inputData.isAttack);
-        AnimationReload(inputData.isReload);
+        PlayerSprint(inputData.isSprint);
     }
 
     private void FixedUpdate()
@@ -44,14 +29,6 @@ public class PlayerMovement : MonoBehaviour
         RotationBehindCamera();
 
         PlayerMove();
-    }
-
-    private void ResetAllWeapons()
-    {
-        foreach (var weapon in _weapons)
-        {
-            weapon.SetActive(false);
-        }
     }
 
     /// <summary>
@@ -88,10 +65,8 @@ public class PlayerMovement : MonoBehaviour
     /// <summary>
     /// Анимация ускорения
     /// </summary>
-    private void AnimationSprint(bool isSprint)
+    private void PlayerSprint(bool isSprint)
     {
-        animator.SetBool("isSprint", isSprint);
-
         if (isSprint) 
         { 
             currentSpeed = _sprintSpeed; 
@@ -100,23 +75,5 @@ public class PlayerMovement : MonoBehaviour
         {
             currentSpeed = _walkSpeed;
         }
-    }
-
-    /// <summary>
-    /// Анимация атаки
-    /// </summary>
-    /// <param name="isAttack"></param>
-    private void AnimationAttack(bool isAttack)
-    {
-        animator.SetBool("isAttack", isAttack);
-    }
-
-    /// <summary>
-    /// Анимация перезарядки
-    /// </summary>
-    /// <param name="isReload"></param>
-    private void AnimationReload(bool isReload)
-    {
-        animator.SetBool("isReload", isReload);
     }
 }
