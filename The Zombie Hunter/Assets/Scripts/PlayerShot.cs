@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class PlayerHandgunShot : MonoBehaviour
+public class PlayerShot : MonoBehaviour
 {
     [SerializeField] private int fireRange = 100;
+    [SerializeField] private int _damage = 10;
 
     private RaycastHit hit;
     private Vector3 directionShot;
@@ -28,8 +29,12 @@ public class PlayerHandgunShot : MonoBehaviour
 
         if (Physics.Raycast(transform.position, directionShot, out hit, fireRange))
         {
-            Debug.Log("Попадание в: " + hit.collider.name);
-            Debug.DrawRay(transform.position, directionShot * hit.distance, Color.red, 2f);
+            if (hit.collider.TryGetComponent<IEnemyHealth>(out IEnemyHealth enemyHealth))
+            {
+                enemyHealth.TakeDamage(_damage);
+                Debug.Log("Попадание в: " + hit.collider.name);
+                Debug.DrawRay(transform.position, directionShot * hit.distance, Color.red, 2f);
+            }
         }
         else
         {
