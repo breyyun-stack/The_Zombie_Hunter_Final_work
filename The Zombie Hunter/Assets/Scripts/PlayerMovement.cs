@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     private InputData inputData;
     private Rigidbody rb;
+    private Animator animator;
     private Vector3 moveDirection;
     private float currentSpeed;
 
@@ -16,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     {
         inputData = GetComponent<InputData>();
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
         currentSpeed = _walkSpeed;
     }
 
@@ -69,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isSprint) 
         { 
-            currentSpeed = _sprintSpeed; 
+            currentSpeed = _sprintSpeed;
         }
         else
         {

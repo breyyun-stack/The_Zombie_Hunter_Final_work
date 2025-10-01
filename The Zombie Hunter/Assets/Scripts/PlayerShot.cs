@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerShot : MonoBehaviour
 {
-    [SerializeField] private int fireRange = 100;
+    [SerializeField] private int fireRange = 50;
     [SerializeField] private int _damage = 10;
 
     private RaycastHit hit;
@@ -23,6 +23,7 @@ public class PlayerShot : MonoBehaviour
     /// </summary>
     public void Shoot()
     {
+        // Ѕерем начальные координаты выстрела и убираем координату y, чтобы выстрел был ровный
         directionShot = -transform.right;
         directionShot.y = 0;
         directionShot.Normalize();
@@ -33,7 +34,7 @@ public class PlayerShot : MonoBehaviour
             {
                 enemyHealth.TakeDamage(_damage);
                 Debug.Log("ѕопадание в: " + hit.collider.name);
-                Debug.DrawRay(transform.position, directionShot * hit.distance, Color.red, 2f);
+                Debug.DrawRay(transform.position, directionShot * fireRange, Color.red, 2f);
             }
         }
         else
