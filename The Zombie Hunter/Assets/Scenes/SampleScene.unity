@@ -2488,6 +2488,7 @@ CanvasRenderer:
   m_GameObject: {fileID: 1612557089}
   m_CullTransparentMesh: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1001 &1644458531
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2561,6 +2562,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d9387201ffe0fe40b5b942f1641747e, type: 3}
+=======
+>>>>>>> parent of 767c8f8 (Добавил зомби без анимации)
 =======
 >>>>>>> parent of 767c8f8 (Добавил зомби без анимации)
 --- !u!1 &1707891067
@@ -3253,5 +3256,8 @@ SceneRoots:
   - {fileID: 1362646171}
   - {fileID: 799496845}
   - {fileID: 304153833}
+<<<<<<< HEAD
   - {fileID: 1644458531}
   - {fileID: 1809817872}
+=======
+>>>>>>> parent of 767c8f8 (Добавил зомби без анимации)
