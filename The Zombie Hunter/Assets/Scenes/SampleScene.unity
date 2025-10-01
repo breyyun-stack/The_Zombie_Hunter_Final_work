@@ -1772,7 +1772,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b85f95eb47068da48b8959f41305206a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRange: 40
+  fireRange: 25
   _damage: 10
 --- !u!1 &962541909
 GameObject:
