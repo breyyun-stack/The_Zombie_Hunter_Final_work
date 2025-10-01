@@ -2487,85 +2487,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1612557089}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
-<<<<<<< HEAD
---- !u!1001 &1644458531
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 121050, guid: 7d9387201ffe0fe40b5b942f1641747e, type: 3}
-      propertyPath: m_Name
-      value: TZ_M_Civ_04
-      objectReference: {fileID: 0}
-    - target: {fileID: 491592, guid: 7d9387201ffe0fe40b5b942f1641747e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 491592, guid: 7d9387201ffe0fe40b5b942f1641747e, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 491592, guid: 7d9387201ffe0fe40b5b942f1641747e, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 491592, guid: 7d9387201ffe0fe40b5b942f1641747e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 491592, guid: 7d9387201ffe0fe40b5b942f1641747e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.11
-      objectReference: {fileID: 0}
-    - target: {fileID: 491592, guid: 7d9387201ffe0fe40b5b942f1641747e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.94
-      objectReference: {fileID: 0}
-    - target: {fileID: 491592, guid: 7d9387201ffe0fe40b5b942f1641747e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 491592, guid: 7d9387201ffe0fe40b5b942f1641747e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 491592, guid: 7d9387201ffe0fe40b5b942f1641747e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 491592, guid: 7d9387201ffe0fe40b5b942f1641747e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 491592, guid: 7d9387201ffe0fe40b5b942f1641747e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 491592, guid: 7d9387201ffe0fe40b5b942f1641747e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 491592, guid: 7d9387201ffe0fe40b5b942f1641747e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9518324, guid: 7d9387201ffe0fe40b5b942f1641747e, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: fa06692cc61c9834aaa920c6d0d63ddd, type: 2}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7d9387201ffe0fe40b5b942f1641747e, type: 3}
-=======
->>>>>>> parent of 767c8f8 (Добавил зомби без анимации)
-=======
->>>>>>> parent of 767c8f8 (Добавил зомби без анимации)
 --- !u!1 &1707891067
 GameObject:
   m_ObjectHideFlags: 0
@@ -2736,7 +2657,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &1809817869
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2821,8 +2742,8 @@ Transform:
   m_GameObject: {fileID: 1809817868}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -8.4135, y: -0, z: 7.749}
+  m_LocalScale: {x: 2.842776, y: 1, z: 2.5498}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -3256,8 +3177,4 @@ SceneRoots:
   - {fileID: 1362646171}
   - {fileID: 799496845}
   - {fileID: 304153833}
-<<<<<<< HEAD
-  - {fileID: 1644458531}
   - {fileID: 1809817872}
-=======
->>>>>>> parent of 767c8f8 (Добавил зомби без анимации)
