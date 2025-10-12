@@ -1,14 +1,14 @@
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour, IEnemyHealth
+public class PlayerHealth : MonoBehaviour, IPlayerHealth
 {
-    [SerializeField] private int _maxHealth = 100;
+    [SerializeField] int maxHealth = 100;
 
     private int currentHealth;
 
     void Start()
     {
-        currentHealth = _maxHealth;
+        currentHealth = maxHealth;
     }
 
     void Update()
@@ -28,5 +28,10 @@ public class EnemyHealth : MonoBehaviour, IEnemyHealth
         EnemyHitEvents.EnemyHit(currentHealth);
 
         Debug.Log($"Жизней осталось: {currentHealth}");
+    }
+
+    public void Heal(int heal)
+    {
+        currentHealth += heal;
     }
 }
