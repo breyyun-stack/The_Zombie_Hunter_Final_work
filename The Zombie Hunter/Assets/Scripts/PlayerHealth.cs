@@ -25,7 +25,7 @@ public class PlayerHealth : MonoBehaviour, IPlayerHealth
             currentHealth = 0;
         }
 
-        EnemyHitEvents.EnemyHit(currentHealth);
+        PlayerHitEvents.PlayerHit(currentHealth);
 
         Debug.Log($"Жизней осталось: {currentHealth}");
     }
