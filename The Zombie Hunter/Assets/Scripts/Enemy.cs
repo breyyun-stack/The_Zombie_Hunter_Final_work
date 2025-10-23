@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public ObjectPool myPool; // —юда Unity сама подставит пул (мы назначим в префабе)
+    public ObjectPool myPool; // —юда Unity сама подставит пул при добавлении префаба в пул
 
     public void Die()
     {

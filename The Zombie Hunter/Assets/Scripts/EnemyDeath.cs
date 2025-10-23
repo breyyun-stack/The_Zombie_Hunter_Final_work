@@ -6,16 +6,17 @@ public class EnemyDeath : MonoBehaviour
     private Collider colliderEnemy;
     private Rigidbody rb;
     private StateController stateController;
+    private Enemy enemy;
 
-    private void OnEnable()
-    {
-        EnemyHitEvents.OnHit += Death;
-    }
+    //private void OnEnable()
+    //{
+    //    EnemyHitEvents.OnHit += Death;
+    //}
 
-    private void OnDisable()
-    {
-        EnemyHitEvents.OnHit -= Death;
-    }
+    //private void OnDisable()
+    //{
+    //    EnemyHitEvents.OnHit -= Death;
+    //}
 
     void Start()
     {
@@ -23,9 +24,10 @@ public class EnemyDeath : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         colliderEnemy = GetComponent<Collider>();
         stateController = GetComponent<StateController>();
+        enemy = GetComponent<Enemy>();
     }
 
-    private void Death(int health)
+    public void Death(int health)
     {
         if (health <= 0)
         {
@@ -37,7 +39,12 @@ public class EnemyDeath : MonoBehaviour
 
             colliderEnemy.enabled = false;
 
-            //animator.enabled = false;
+            Invoke("ReturnPool", 5f);
         }
+    }
+
+    private void ReturnPool()
+    {
+        enemy.Die();
     }
 }

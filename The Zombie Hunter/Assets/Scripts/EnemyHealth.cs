@@ -2,13 +2,21 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour, IEnemyHealth
 {
-    [SerializeField] private int _maxHealth = 100;
+    [SerializeField] private int maxHealth = 100;
+
+    private EnemyDeath _enemyDeath;
+
+    private EnemyHit _enemyHit;
 
     private int currentHealth;
 
     void Start()
     {
-        currentHealth = _maxHealth;
+        _enemyDeath = GetComponent<EnemyDeath>();
+
+        _enemyHit = GetComponent<EnemyHit>();
+
+        currentHealth = maxHealth;
     }
 
     void Update()
@@ -25,7 +33,11 @@ public class EnemyHealth : MonoBehaviour, IEnemyHealth
             currentHealth = 0;
         }
 
-        EnemyHitEvents.EnemyHit(currentHealth);
+        _enemyDeath.Death(currentHealth);
+
+        _enemyHit.HitEnemy();
+
+        //EnemyHitEvents.EnemyHit(currentHealth);
 
         Debug.Log($"Жизней осталось: {currentHealth}");
     }

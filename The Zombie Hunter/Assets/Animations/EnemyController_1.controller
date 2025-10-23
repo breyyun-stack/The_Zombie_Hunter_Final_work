@@ -58,7 +58,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: TZ_aggresive_damage_A
-  m_Speed: 1
+  m_Speed: 0.7
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -3671431154616498116}
@@ -173,9 +173,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0
-  m_TransitionOffset: 0.10714302
-  m_ExitTime: 1
+  m_TransitionDuration: 0.13965738
+  m_TransitionOffset: 0.047289744
+  m_ExitTime: 0.8826878
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
