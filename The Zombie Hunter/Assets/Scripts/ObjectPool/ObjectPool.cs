@@ -4,7 +4,6 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     [SerializeField] private GameObject _gameObject;
-
     [SerializeField] private int initialPoolSize = 50;
 
     private Queue<GameObject> pooledObjects = new Queue<GameObject>();
@@ -13,6 +12,10 @@ public class ObjectPool : MonoBehaviour
     {
         PreloadPool();
     }
+
+    /// <summary>
+    /// Создание пула
+    /// </summary>
     void PreloadPool()
     {
         for (int i = 0; i < initialPoolSize; i++)
@@ -23,7 +26,12 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
-    // Получить объект из пула
+    /// <summary>
+    /// Получить из пула
+    /// </summary>
+    /// <param name="position"></param>
+    /// <param name="rotation"></param>
+    /// <returns></returns>
     public GameObject GetPool(Vector3 position, Quaternion rotation)
     {
         if (pooledObjects.Count == 0) return null;
@@ -35,32 +43,12 @@ public class ObjectPool : MonoBehaviour
         obj.transform.SetPositionAndRotation(position, rotation);
         obj.SetActive(true);
         return obj;
-
-        //if (pooledObjects.Count > 0)
-        //{
-        //    obj = pooledObjects.Dequeue();
-
-        //    obj.transform.SetPositionAndRotation(position, rotation);
-        //    obj.SetActive(true);
-        //    return obj;
-        //}
-        //else
-        //{
-        //    // Опционально: создать новый, если пул исчерпан
-        //    //Debug.LogWarning("Пул исчерпан для " + _gameObject.name + ". Создаём новый.");
-        //    //obj = Instantiate(_gameObject, transform);
-
-        //    Debug.LogWarning("Пул исчерпан для " + _gameObject.name);
-
-        //    return null;
-        //}
-
-        //obj.transform.SetPositionAndRotation(position, rotation);
-        //obj.SetActive(true);
-
     }
 
-    // Вернуть объект в пул
+    /// <summary>
+    /// Вернуть в пул
+    /// </summary>
+    /// <param name="obj"></param>
     public void ReturnToPool(GameObject obj)
     {
         if (obj == null) return;
@@ -68,5 +56,19 @@ public class ObjectPool : MonoBehaviour
         obj.SetActive(false);
         //obj.transform.SetParent(transform); // Опционально: держать в иерархии пула
         pooledObjects.Enqueue(obj);
+    }
+
+    /// <summary>
+    /// Увеличить пул
+    /// </summary>
+    /// <param name="poolCount"></param>
+    public void IncreaseThePool(int poolCount)
+    {
+        for (int i = 0; i < poolCount; i++)
+        {
+            GameObject obj = Instantiate(_gameObject, transform);
+            obj.SetActive(false);
+            pooledObjects.Enqueue(obj);
+        }
     }
 }

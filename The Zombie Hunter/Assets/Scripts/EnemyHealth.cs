@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour, IEnemyHealth
 {
-    [SerializeField] private int maxHealth = 100;
+    public int maxHealth = 100;
 
     private EnemyDeath _enemyDeath;
 
@@ -17,11 +17,6 @@ public class EnemyHealth : MonoBehaviour, IEnemyHealth
         _enemyHit = GetComponent<EnemyHit>();
 
         currentHealth = maxHealth;
-    }
-
-    void Update()
-    {
-        
     }
 
     public void TakeDamage(int damage)

@@ -6,17 +6,9 @@ public class EnemyDeath : MonoBehaviour
     private Collider colliderEnemy;
     private Rigidbody rb;
     private StateController stateController;
-    private Enemy enemy;
 
-    //private void OnEnable()
-    //{
-    //    EnemyHitEvents.OnHit += Death;
-    //}
-
-    //private void OnDisable()
-    //{
-    //    EnemyHitEvents.OnHit -= Death;
-    //}
+    public ObjectPool MyPool { get; set; }
+    public SpawnerEnemy SpawnerEnemy { get; set; }
 
     void Start()
     {
@@ -24,9 +16,12 @@ public class EnemyDeath : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         colliderEnemy = GetComponent<Collider>();
         stateController = GetComponent<StateController>();
-        enemy = GetComponent<Enemy>();
     }
 
+    /// <summary>
+    /// —мерть врага перед возвращением в пул
+    /// </summary>
+    /// <param name="health"></param>
     public void Death(int health)
     {
         if (health <= 0)
@@ -34,17 +29,24 @@ public class EnemyDeath : MonoBehaviour
             animator.SetTrigger("isDeath");
 
             rb.isKinematic = true;
-
             stateController.enabled = false;
-
             colliderEnemy.enabled = false;
 
             Invoke("ReturnPool", 5f);
         }
     }
 
+    /// <summary>
+    /// ¬озвращение в пул и восстановление дл€ применени€
+    /// </summary>
     private void ReturnPool()
     {
-        enemy.Die();
+        SpawnerEnemy.TheNumberOfEnemiesKilled();
+
+        rb.isKinematic = false;
+        stateController.enabled = true;
+        colliderEnemy.enabled = true;
+
+        MyPool.ReturnToPool(gameObject);
     }
 }
