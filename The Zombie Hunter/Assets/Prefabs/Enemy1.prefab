@@ -6897,10 +6897,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.18139704
+  m_Radius: 0.2403462
   m_Height: 1.5488925
   m_Direction: 1
-  m_Center: {x: 0.0102588115, y: 0.76120925, z: -0.030622143}
+  m_Center: {x: 0.0010790144, y: 0.76120925, z: -0.047061954}
 --- !u!54 &4815986422447723901
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7115,7 +7115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4778b7d1c9ed862488b1f7c9d676dc65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myPool: {fileID: 0}
 --- !u!114 &239767996872643630
 MonoBehaviour:
   m_ObjectHideFlags: 0

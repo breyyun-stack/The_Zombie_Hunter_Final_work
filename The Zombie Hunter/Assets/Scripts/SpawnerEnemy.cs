@@ -1,13 +1,16 @@
-using Unity.VisualScripting;
+using System;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
+
 
 public class SpawnerEnemy : MonoBehaviour
 {
     [SerializeField] private ObjectPool enemyPool;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private int initialPoolSize = 5;
-    [SerializeField] private float timeUntilTheNextWave = 3;
+    [SerializeField] private int timeUntilTheNextWave = 3;
+    public Action<int> OnTick;
 
     private GameObject[] trackingPoints;
 
@@ -16,9 +19,8 @@ public class SpawnerEnemy : MonoBehaviour
     private int currentWave = 0;
     private int waveIncrease = 2;
 
-    private float currentTimeUntilTheNextWave = 0;
-
-    private bool isStartWaveEnemy = false;
+    private bool IsStartWaveEnemy = true;
+    private bool IsReadyWave = true;
 
     private void Start()
     {
@@ -26,47 +28,49 @@ public class SpawnerEnemy : MonoBehaviour
 
         currentPoolSize = 0;
         theNumberOfEnemiesKilled = 0;
-        currentTimeUntilTheNextWave = timeUntilTheNextWave;
     }
 
     private void Update()
     {
-        SpawnEnemy();
-
         Debug.Log($"Количество врагов в пуле: {currentPoolSize}");
         Debug.Log($"Количество убитых врагов: {theNumberOfEnemiesKilled}");
 
-        if (isStartWaveEnemy)
+        if (IsReadyWave && IsStartWaveEnemy)
         {
-            SpawnEnemy();
+            EnemyWave();
 
-            if (currentPoolSize == initialPoolSize) isStartWaveEnemy = false;
+            IsReadyWave = false;
+            currentWave++;
         }
     }
 
     /// <summary>
-    /// Создание волны врагов
+    /// Создание волны
+    /// </summary>
+    private void EnemyWave()
+    {
+        for (int i = 0; i < initialPoolSize; i++) 
+        {
+            SpawnEnemy();
+        }
+    }
+
+    /// <summary>
+    /// Создание врага
     /// </summary>
     void SpawnEnemy()
     {
-        if (currentPoolSize < initialPoolSize)
-        {
-            currentWave++;
+        var randomNumberPosition = Random.Range(0, trackingPoints.Length);
+        var position = trackingPoints[randomNumberPosition].transform.position;
 
-            var randomNumberPosition = Random.Range(0, trackingPoints.Length);
-            var position = trackingPoints[randomNumberPosition].transform.position;
+        // Берём врага из пула
+        GameObject newEnemy = enemyPool.GetPool(position, Quaternion.identity);
 
-            // Берём врага из пула
-            GameObject newEnemy = enemyPool.GetPool(position, Quaternion.identity);
+        if (newEnemy == null) return;
 
-            if (newEnemy == null) return;
-
-            // Говорим врагу: "Твой пул — вот он!"
-            newEnemy.GetComponent<EnemyDeath>().MyPool = enemyPool;
-            newEnemy.GetComponent<EnemyDeath>().SpawnerEnemy = this;
-
-            currentPoolSize++;
-        }
+        // Даем ссылку врагу на пул для возврата
+        newEnemy.GetComponent<EnemyDeath>().MyPool = enemyPool;
+        newEnemy.GetComponent<EnemyDeath>().SpawnerEnemy = this;
     }
 
     /// <summary>
@@ -78,10 +82,50 @@ public class SpawnerEnemy : MonoBehaviour
 
         if (theNumberOfEnemiesKilled == initialPoolSize)
         {
-            isStartWaveEnemy = true;
+            IsStartWaveEnemy = true;
             currentPoolSize = 0;
             initialPoolSize += waveIncrease;
             theNumberOfEnemiesKilled = 0;
+
+            StartCountdown();
         }
+    }
+
+    /// <summary>
+    /// Старт таймера
+    /// </summary>
+    public void StartCountdown()
+    {
+        //IsReadyWave = false;
+        StartCoroutine(Countdown());
+    }
+
+    /// <summary>
+    /// Таймер
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator Countdown()
+    {
+        int remaining = timeUntilTheNextWave;
+
+        while (remaining > 0)
+        {
+            OnTick?.Invoke(remaining); // вызов события с текущим временем
+            yield return new WaitForSeconds(1f);
+            remaining--;
+        }
+
+        Debug.Log($"Прошло {timeUntilTheNextWave} секунд");
+
+        OnTick?.Invoke(0); // Последний тик на 0
+        IsReadyWave = true;
+    }
+
+    /// <summary>
+    /// Cброс таймера
+    /// </summary>
+    public void Reset()
+    {
+        IsReadyWave = false;
     }
 }

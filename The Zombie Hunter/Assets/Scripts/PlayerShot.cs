@@ -28,31 +28,22 @@ public class PlayerShot : MonoBehaviour
         directionShot.y = 0;
         directionShot.Normalize();
 
-        Physics.Raycast(transform.position, directionShot, out hit, fireRange);
+        bool shoot = Physics.Raycast(transform.position, directionShot, out hit, fireRange);
 
-        if (hit.collider.TryGetComponent<IEnemyHealth>(out IEnemyHealth enemyHealth))
+        if (shoot)
         {
-            enemyHealth.TakeDamage(_damage);
-            Debug.Log("Попадание в: " + hit.collider.name);
-            Debug.DrawRay(transform.position, directionShot * fireRange, Color.red, 2f);
+            Debug.DrawRay(transform.position, directionShot * fireRange, Color.white, 2f);
+
+            if (hit.collider.TryGetComponent<IEnemyHealth>(out IEnemyHealth enemyHealth))
+            {
+                enemyHealth.TakeDamage(_damage);
+                //Debug.Log("Попадание в: " + hit.collider.name);
+                Debug.DrawRay(transform.position, directionShot * fireRange, Color.red, 2f);
+            }
         }
         else
         {
             Debug.DrawRay(transform.position, directionShot * fireRange, Color.green, 2f);
         }
-
-        //if (Physics.Raycast(transform.position, directionShot, out hit, fireRange))
-        //{
-        //    if (hit.collider.TryGetComponent<IEnemyHealth>(out IEnemyHealth enemyHealth))
-        //    {
-        //        enemyHealth.TakeDamage(_damage);
-        //        Debug.Log("Попадание в: " + hit.collider.name);
-        //        Debug.DrawRay(transform.position, directionShot * fireRange, Color.red, 2f);
-        //    }
-        //}
-        //else
-        //{
-        //    Debug.DrawRay(transform.position, directionShot * fireRange, Color.green, 2f);
-        //}
     }
 }
