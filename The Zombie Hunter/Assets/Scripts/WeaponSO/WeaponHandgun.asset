@@ -12,3 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb167fc142e897498c1f4f2a9d6fe41, type: 3}
   m_Name: WeaponHandgun
   m_EditorClassIdentifier: 
+  _overrideController: {fileID: 22100000, guid: 67c1c276669258547919fceec7eecebc, type: 2}
+  _fireRange: 20
+  _damage: 20
+  _speedAnimation: 1
+  weaponType: 1

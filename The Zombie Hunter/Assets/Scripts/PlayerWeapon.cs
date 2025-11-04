@@ -1,10 +1,21 @@
-using UnityEngine;
+﻿using UnityEngine;
+using VContainer;
 
 public class PlayerWeapon : MonoBehaviour
 {
-    [SerializeField] private RuntimeAnimatorController[] _animatorOverride;
-    [SerializeField] private GameObject[] _weapons;
+    private WeaponManagerSO _weaponManagerSO;
+
+    [Inject]
+    public void Construct(WeaponManagerSO weaponManager)
+    {
+        _weaponManagerSO = weaponManager;
+    }
+
+    [SerializeField] private Transform[] _firePoints;
+
     [SerializeField] private int _startWeaponIndex = 0;
+
+    [SerializeField] private GameObject[] _weaponViews; // дочерние оружия на сцене
 
     private Animator animator;
 
@@ -17,7 +28,7 @@ public class PlayerWeapon : MonoBehaviour
 
     void Start()
     {
-        animator = GetComponent<Animator>();
+        Debug.Log($"Количество оружия: {_weaponManagerSO.WeaponCount}");
     }
 
     private void OnEnable()
@@ -31,25 +42,32 @@ public class PlayerWeapon : MonoBehaviour
     }
 
     /// <summary>
-    /// ����� ����� ������
+    /// Сброс всего оружия
     /// </summary>
     public void ResetAllWeapons()
     {
-        foreach (var weapon in _weapons)
+        foreach (var weapon in _weaponViews) 
         {
             weapon.SetActive(false);
         }
     }
 
     /// <summary>
-    /// ����� ������
+    /// Смена оружия
     /// </summary>
     /// <param name="numberWeapon"></param>
     public void ChangeWeapon(int numberWeapon) 
     {
+        _weaponManagerSO.IndexWeapon = numberWeapon;
+        _weaponManagerSO.FirePoint = _firePoints[numberWeapon];
+
+        var weapon = _weaponManagerSO.GetWeapon(numberWeapon);
+        if (weapon == null) return;
+
         ResetAllWeapons();
 
-        animator.runtimeAnimatorController = _animatorOverride[numberWeapon];
-        _weapons[numberWeapon].SetActive(true);
+        animator.runtimeAnimatorController = weapon._overrideController;
+
+        _weaponViews[numberWeapon].SetActive(true);
     }
 }

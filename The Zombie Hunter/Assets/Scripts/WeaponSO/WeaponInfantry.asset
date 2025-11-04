@@ -12,3 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb167fc142e897498c1f4f2a9d6fe41, type: 3}
   m_Name: WeaponInfantry
   m_EditorClassIdentifier: 
+  _overrideController: {fileID: 22100000, guid: b98c37c95ad096640b0672d6e3ba6851, type: 2}
+  _fireRange: 50
+  _damage: 30
+  _speedAnimation: 2
+  weaponType: 2

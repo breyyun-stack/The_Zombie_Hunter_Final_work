@@ -12,3 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb167fc142e897498c1f4f2a9d6fe41, type: 3}
   m_Name: WeaponKnife
   m_EditorClassIdentifier: 
+  _overrideController: {fileID: 22100000, guid: 10584ac08dff3814ca2948e326cfc96c, type: 2}
+  _weapon: {fileID: 0}
+  _fireRange: 0
+  _damage: 10
+  _speedAnimation: 1

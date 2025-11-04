@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4cb167fc142e897498c1f4f2a9d6fe41, type: 3}
-  m_Name: WeaponRocketLauncher
+  m_Name: WeaponShotgun
   m_EditorClassIdentifier: 
-  _overrideController: {fileID: 22100000, guid: 507486aecb83c524d9a7e27b1d0f7201, type: 2}
-  _weapon: {fileID: 0}
-  _fireRange: 100
-  _damage: 100
+  _overrideController: {fileID: 22100000, guid: 2083142d38c6ffc40a8401eb0b087afc, type: 2}
+  _fireRange: 30
+  _damage: 70
   _speedAnimation: 1
+  weaponType: 3
