@@ -5,17 +5,16 @@ using VContainer.Unity;
 public class GameLifetimeScope : LifetimeScope
 {
     [SerializeField] private WeaponManagerSO _weaponConfig;
+    [SerializeField] private ObjectPool _objectPoolForRocketLauncher;
 
     protected override void Configure(IContainerBuilder builder)
     {
-        // Регистрируем ScriptableObject как синглтон (один экземпляр на весь scope)
-        builder.Register<WeaponService>(Lifetime.Singleton).As<IWeaponService>();
-
-        // Регистрируем ScriptableObject как синглтон (один экземпляр на весь scope)
         builder.RegisterInstance(_weaponConfig);
+        builder.RegisterInstance(_objectPoolForRocketLauncher);
 
         // Регистрируем как MonoBehaviour
         builder.RegisterComponentInHierarchy<PlayerWeapon>();
         builder.RegisterComponentInHierarchy<PlayerShot>();
+        builder.RegisterComponentInHierarchy<PlayerShotRocketLauncher>();
     }
 }

@@ -56,9 +56,6 @@ public class PlayerShot : MonoBehaviour
             case WeaponType.Shotgun:
                 ShootShotgun(muzzle.position, directionShot, weapon);
                 break;
-            case WeaponType.RocketLauncher:
-                ShootRocketLauncher(muzzle.position, directionShot, weapon);
-                break;
             default:
                 ShootKnife(weapon);
                 break;
@@ -135,10 +132,5 @@ public class PlayerShot : MonoBehaviour
                 Debug.DrawRay(muzzle, randomDirection * weapon._fireRange, Color.green, 2f);
             }
         }
-    }
-
-    public void ShootRocketLauncher(Vector3 muzzle, Vector3 direction, WeaponSO weapon)
-    {
-
     }
 }

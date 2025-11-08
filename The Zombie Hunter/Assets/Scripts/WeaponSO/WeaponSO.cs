@@ -25,4 +25,5 @@ public class WeaponSO : ScriptableObject
     [Header("Параметры базуки")]
     public GameObject prefabRocketLauncher;
     public float shotPower = 10f;
+    public float explosionRadius = 3f;
 }
