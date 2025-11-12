@@ -8,6 +8,13 @@ public class ExplodeMissileRocketLauncher : MonoBehaviour
     private int damage;
     private ObjectPool objectPool;
 
+    /// <summary>
+    /// Инициализация всех необходимых параметров при вызове из пула
+    /// </summary>
+    /// <param name="explosionRadius"></param>
+    /// <param name="damage"></param>
+    /// <param name="pool"></param>
+    /// <param name="gizmoExplode"></param>
     public void Initialize(float explosionRadius, int damage, ObjectPool pool, bool gizmoExplode)
     {
         this.explosionRadius = explosionRadius;
@@ -19,10 +26,11 @@ public class ExplodeMissileRocketLauncher : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Explode();
-
-        //Destroy(this.gameObject);
     }
 
+    /// <summary>
+    /// Взрыв снаряда и нанесение урона
+    /// </summary>
     public void Explode()
     {
         // Получаем все коллайдеры в радиусе взрыва
@@ -39,6 +47,9 @@ public class ExplodeMissileRocketLauncher : MonoBehaviour
         objectPool.ReturnToPool(this.gameObject);
     }
 
+    /// <summary>
+    /// Отображение радиуса взрыва
+    /// </summary>
     private void OnDrawGizmos()
     {
         if (gizmoExplode)
