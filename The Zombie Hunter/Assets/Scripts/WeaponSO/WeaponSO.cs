@@ -13,9 +13,9 @@ public class WeaponSO : ScriptableObject
     }
 
     public RuntimeAnimatorController _overrideController;
-    public int _fireRange;
-    public int _damage;
-    public float _speedAnimation;
+    public int fireRange;
+    public int damage;
+    public float speedAnimation;
     public WeaponType weaponType;
 
     [Header("Параметры дробовика")]
@@ -26,4 +26,5 @@ public class WeaponSO : ScriptableObject
     public GameObject prefabRocketLauncher;
     public float shotPower = 10f;
     public float explosionRadius = 3f;
+    public bool gismoExplode = false;
 }

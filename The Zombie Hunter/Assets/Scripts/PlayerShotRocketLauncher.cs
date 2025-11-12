@@ -53,6 +53,11 @@ public class PlayerShotRocketLauncher : MonoBehaviour
         // Достаем из пул снаряд и поворачиваем его правильно
         var missile = _objectPoolForRocketLauncher.GetPool(muzzle.position, Quaternion.LookRotation(directionShot, muzzle.up));
 
+        if (missile.TryGetComponent<ExplodeMissileRocketLauncher>(out var exploder))
+        {
+            exploder.Initialize(weapon.explosionRadius, weapon.damage, _objectPoolForRocketLauncher, weapon.gismoExplode);
+        }
+
         var rb = missile.GetComponent<Rigidbody>();
         rb.linearVelocity = Vector3.zero;
         rb.AddForce(directionShot * weapon.shotPower, ForceMode.Impulse);

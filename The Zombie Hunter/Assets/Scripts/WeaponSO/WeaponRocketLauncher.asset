@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: WeaponRocketLauncher
   m_EditorClassIdentifier: 
   _overrideController: {fileID: 22100000, guid: 507486aecb83c524d9a7e27b1d0f7201, type: 2}
-  _fireRange: 100
-  _damage: 100
-  _speedAnimation: 1
+  fireRange: 1
+  damage: 100
+  speedAnimation: 1
   weaponType: 4
   pelletCount: 8
   spreadAngle: 10
   prefabRocketLauncher: {fileID: 3217861246305228748, guid: b812397f03fada34c821520f9f6e8c96, type: 3}
   shotPower: 10
+  explosionRadius: 3
+  gismoExplode: 0

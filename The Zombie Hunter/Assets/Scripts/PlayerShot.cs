@@ -76,24 +76,24 @@ public class PlayerShot : MonoBehaviour
     /// <param name="weapon"></param>
     public void ShootPistolAndRifle(Vector3 muzzle, Vector3 direction, WeaponSO weapon)
     {
-        bool shoot = Physics.Raycast(muzzle, direction, out hit, weapon._fireRange);
+        bool shoot = Physics.Raycast(muzzle, direction, out hit, weapon.fireRange);
 
         if (shoot)
         {
-            Debug.DrawRay(muzzle, direction * weapon._fireRange, Color.white, 2f);
+            Debug.DrawRay(muzzle, direction * weapon.fireRange, Color.white, 2f);
 
-            Debug.Log($"Сила выстрела: {weapon._damage}. Расстояние выстрела: {weapon._fireRange}");
+            Debug.Log($"Сила выстрела: {weapon.damage}. Расстояние выстрела: {weapon.fireRange}");
 
             if (hit.collider.TryGetComponent<IEnemyHealth>(out IEnemyHealth enemyHealth))
             {
-                enemyHealth.TakeDamage(weapon._damage);
+                enemyHealth.TakeDamage(weapon.damage);
 
-                Debug.DrawRay(muzzle, direction * weapon._fireRange, Color.red, 2f);
+                Debug.DrawRay(muzzle, direction * weapon.fireRange, Color.red, 2f);
             }
         }
         else
         {
-            Debug.DrawRay(muzzle, direction * weapon._fireRange, Color.green, 2f);
+            Debug.DrawRay(muzzle, direction * weapon.fireRange, Color.green, 2f);
         }
     }
 
@@ -112,24 +112,24 @@ public class PlayerShot : MonoBehaviour
             randomDirection = Vector3.RotateTowards(direction, randomDirection, Mathf.Deg2Rad * weapon.spreadAngle, 0f);
             randomDirection = randomDirection.normalized;
 
-            bool shoot = Physics.Raycast(muzzle, direction, out hit, weapon._fireRange);
+            bool shoot = Physics.Raycast(muzzle, direction, out hit, weapon.fireRange);
 
             if (shoot)
             {
-                Debug.DrawRay(muzzle, randomDirection * weapon._fireRange, Color.white, 2f);
+                Debug.DrawRay(muzzle, randomDirection * weapon.fireRange, Color.white, 2f);
 
-                Debug.Log($"Сила выстрела: {weapon._damage}. Расстояние выстрела: {weapon._fireRange}");
+                Debug.Log($"Сила выстрела: {weapon.damage}. Расстояние выстрела: {weapon.fireRange}");
 
                 if (hit.collider.TryGetComponent<IEnemyHealth>(out IEnemyHealth enemyHealth))
                 {
-                    enemyHealth.TakeDamage(weapon._damage);
+                    enemyHealth.TakeDamage(weapon.damage);
 
-                    Debug.DrawRay(muzzle, randomDirection * weapon._fireRange, Color.red, 2f);
+                    Debug.DrawRay(muzzle, randomDirection * weapon.fireRange, Color.red, 2f);
                 }
             }
             else
             {
-                Debug.DrawRay(muzzle, randomDirection * weapon._fireRange, Color.green, 2f);
+                Debug.DrawRay(muzzle, randomDirection * weapon.fireRange, Color.green, 2f);
             }
         }
     }
