@@ -14,7 +14,7 @@ public class PlayerShot : MonoBehaviour
 
     private RaycastHit hit;
     private Vector3 directionShot;
-    
+
     private void OnEnable()
     {
         PlayerShootEvents.OnShoot += Shoot;
@@ -30,36 +30,36 @@ public class PlayerShot : MonoBehaviour
     /// </summary>
     public void Shoot()
     {
-        var indexWeapon = _weaponManagerSO.IndexWeapon;
+        //var indexWeapon = _weaponManagerSO.IndexWeapon;
 
-        var muzzle = _weaponManagerSO.FirePoint;
-        var weapon = _weaponManagerSO.GetWeapon(indexWeapon);
+        //var muzzle = _weaponManagerSO.FirePoint;
+        //var weapon = _weaponManagerSO.GetWeapon(indexWeapon);
 
-        if (weapon == null || muzzle == null)
-        {
-            return;
-        }
+        //if (weapon == null || muzzle == null)
+        //{
+        //    return;
+        //}
 
-        // Берем начальные координаты выстрела и убираем координату y, чтобы выстрел был ровный
-        directionShot = -muzzle.right;
-        directionShot.y = 0;
-        directionShot.Normalize();
+        //// Берем начальные координаты выстрела и убираем координату y, чтобы выстрел был ровный
+        //directionShot = -muzzle.right;
+        //directionShot.y = 0;
+        //directionShot.Normalize();
 
-        switch (weapon.weaponType)
-        {
-            case WeaponType.Pistol:
-                ShootPistolAndRifle(muzzle.position, directionShot, weapon);
-                break;
-            case WeaponType.Rifle:
-                ShootPistolAndRifle(muzzle.position, directionShot, weapon);
-                break;
-            case WeaponType.Shotgun:
-                ShootShotgun(muzzle.position, directionShot, weapon);
-                break;
-            default:
-                ShootKnife(weapon);
-                break;
-        }
+        //switch (weapon.weaponType)
+        //{
+        //    case WeaponType.Pistol:
+        //        ShootPistolAndRifle(muzzle.position, directionShot, weapon);
+        //        break;
+        //    case WeaponType.Rifle:
+        //        ShootPistolAndRifle(muzzle.position, directionShot, weapon);
+        //        break;
+        //    case WeaponType.Shotgun:
+        //        ShootShotgun(muzzle.position, directionShot, weapon);
+        //        break;
+        //    default:
+        //        ShootKnife(weapon);
+        //        break;
+        //}
     }
 
 

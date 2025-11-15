@@ -13,7 +13,13 @@ MonoBehaviour:
   m_Name: WeaponShotgun
   m_EditorClassIdentifier: 
   _overrideController: {fileID: 22100000, guid: 2083142d38c6ffc40a8401eb0b087afc, type: 2}
-  _fireRange: 30
-  _damage: 70
-  _speedAnimation: 1
+  fireRange: 20
+  damage: 40
+  speedAnimation: 1
   weaponType: 3
+  pelletCount: 8
+  spreadAngle: 10
+  prefabRocketLauncher: {fileID: 0}
+  shotPower: 10
+  explosionRadius: 3
+  gismoExplode: 0

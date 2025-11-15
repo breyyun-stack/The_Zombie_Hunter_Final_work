@@ -13,7 +13,13 @@ MonoBehaviour:
   m_Name: WeaponInfantry
   m_EditorClassIdentifier: 
   _overrideController: {fileID: 22100000, guid: b98c37c95ad096640b0672d6e3ba6851, type: 2}
-  _fireRange: 50
-  _damage: 30
-  _speedAnimation: 2
+  fireRange: 30
+  damage: 30
+  speedAnimation: 1
   weaponType: 2
+  pelletCount: 8
+  spreadAngle: 10
+  prefabRocketLauncher: {fileID: 0}
+  shotPower: 10
+  explosionRadius: 3
+  gismoExplode: 0

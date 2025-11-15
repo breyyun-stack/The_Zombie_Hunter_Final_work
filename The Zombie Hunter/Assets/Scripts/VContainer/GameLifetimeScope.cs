@@ -14,7 +14,10 @@ public class GameLifetimeScope : LifetimeScope
 
         // Регистрируем как MonoBehaviour
         builder.RegisterComponentInHierarchy<PlayerWeapon>();
-        builder.RegisterComponentInHierarchy<PlayerShot>();
+        //builder.RegisterComponentInHierarchy<PlayerShot>();
+        builder.RegisterComponentInHierarchy<PlayerShotPistol>();
+        builder.RegisterComponentInHierarchy<PlayerShotRifle>();
+        builder.RegisterComponentInHierarchy<PlayerShotShotgun>();
         builder.RegisterComponentInHierarchy<PlayerShotRocketLauncher>();
     }
 }
