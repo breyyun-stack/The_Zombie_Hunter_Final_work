@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+п»їusing System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
@@ -14,7 +14,7 @@ public class ObjectPool : MonoBehaviour
     }
 
     /// <summary>
-    /// Создание пула
+    /// РЎРѕР·РґР°РЅРёРµ РїСѓР»Р°
     /// </summary>
     void PreloadPool()
     {
@@ -27,7 +27,7 @@ public class ObjectPool : MonoBehaviour
     }
 
     /// <summary>
-    /// Получить из пула
+    /// РџРѕР»СѓС‡РёС‚СЊ РёР· РїСѓР»Р°
     /// </summary>
     /// <param name="position"></param>
     /// <param name="rotation"></param>
@@ -42,24 +42,28 @@ public class ObjectPool : MonoBehaviour
 
         obj.transform.SetPositionAndRotation(position, rotation);
         obj.SetActive(true);
+
         return obj;
     }
 
     /// <summary>
-    /// Вернуть в пул
+    /// Р’РµСЂРЅСѓС‚СЊ РІ РїСѓР»
     /// </summary>
     /// <param name="obj"></param>
     public void ReturnToPool(GameObject obj)
     {
         if (obj == null) return;
 
+        obj.transform.position = Vector3.zero;
+        obj.transform.rotation = Quaternion.identity;
+
         obj.SetActive(false);
-        //obj.transform.SetParent(transform); // Опционально: держать в иерархии пула
+        //obj.transform.SetParent(transform); // РћРїС†РёРѕРЅР°Р»СЊРЅРѕ: РґРµСЂР¶Р°С‚СЊ РІ РёРµСЂР°СЂС…РёРё РїСѓР»Р°
         pooledObjects.Enqueue(obj);
     }
 
     /// <summary>
-    /// Увеличить пул
+    /// РЈРІРµР»РёС‡РёС‚СЊ РїСѓР»
     /// </summary>
     /// <param name="poolCount"></param>
     public void IncreaseThePool(int poolCount)

@@ -11,19 +11,16 @@ public class PlayerHealth : MonoBehaviour, IPlayerHealth
         currentHealth = maxHealth;
     }
 
-    void Update()
-    {
-        
-    }
-
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
 
-        if (currentHealth <= 0)
-        {
-            currentHealth = 0;
-        }
+        currentHealth = Mathf.Max(currentHealth, 0);
+
+        //if (currentHealth <= 0)
+        //{
+        //    currentHealth = 0;
+        //}
 
         PlayerHitEvents.PlayerHit(currentHealth);
 
@@ -33,5 +30,9 @@ public class PlayerHealth : MonoBehaviour, IPlayerHealth
     public void Heal(int heal)
     {
         currentHealth += heal;
+
+        currentHealth = Mathf.Min(currentHealth, maxHealth);
+
+        Debug.Log($"+ {heal} к жизни. Теперь жизней {currentHealth}");
     }
 }

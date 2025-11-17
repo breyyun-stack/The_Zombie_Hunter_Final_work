@@ -10,6 +10,8 @@ public class EnemyDeath : MonoBehaviour
     public ObjectPool MyPool { get; set; }
     public SpawnerEnemy SpawnerEnemy { get; set; }
 
+    private bool _firstFrameAfterEnable = false;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -26,13 +28,16 @@ public class EnemyDeath : MonoBehaviour
     {
         if (health <= 0)
         {
+            rb.isKinematic = true;
+
             animator.SetTrigger("isDeath");
 
-            rb.isKinematic = true;
             stateController.enabled = false;
             colliderEnemy.enabled = false;
 
-            Invoke("ReturnPool", 5f);
+            LootFactory.Spawn(LootType.Coin, transform.position + Vector3.up * 1f, Quaternion.identity);
+
+            Invoke("ReturnPool", 1.5f);
         }
     }
 
