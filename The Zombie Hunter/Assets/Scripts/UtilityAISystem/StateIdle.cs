@@ -57,7 +57,7 @@ public class StateIdle : State
     
     public override void Execute()
     {
-        Debug.Log("Патрулирование");
+        //Debug.Log("Патрулирование");
 
         animator.SetBool("isWalk", true);
 

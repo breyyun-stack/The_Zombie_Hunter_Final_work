@@ -54,8 +54,8 @@ public class ObjectPool : MonoBehaviour
     {
         if (obj == null) return;
 
-        obj.transform.position = Vector3.zero;
-        obj.transform.rotation = Quaternion.identity;
+        //obj.transform.position = Vector3.zero;
+        //obj.transform.rotation = Quaternion.identity;
 
         obj.SetActive(false);
         //obj.transform.SetParent(transform); // Опционально: держать в иерархии пула

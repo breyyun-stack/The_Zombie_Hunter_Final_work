@@ -54,7 +54,14 @@ public static class LootFactory
         }
 
         GameObject loot = targetPool.GetPool(position, rotation);
-        if (loot == null)
+
+        //loot.GetComponent<AddMoney>().MyPool = targetPool;
+
+        if (loot != null) 
+        {
+            loot.GetComponent<AddMoney>().MyPool = targetPool;
+        }
+        else
         {
             Debug.LogWarning($"Пул для {type} пуст! Рассмотрите IncreaseThePool().");
         }

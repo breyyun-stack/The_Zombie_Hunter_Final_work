@@ -95,6 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8a77a61f3d6a8948b01b6d2cbd07cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _timeOfAppearance: 1
+  _timeRotate: 3
 --- !u!114 &4478996544077480334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,7 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c95a1893cd23b14fbe1227916e5539b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 1
+  _lootType: 0
+  _amount: 1
 --- !u!64 &1866263082330140287
 MeshCollider:
   m_ObjectHideFlags: 0

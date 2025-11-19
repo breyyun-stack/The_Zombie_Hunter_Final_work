@@ -25,7 +25,7 @@ public class StateChase : State
 
     public override void Execute()
     {
-        Debug.Log("Преследование");
+        //Debug.Log("Преследование");
 
         animator.SetBool("isRun", true);
                 

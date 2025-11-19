@@ -27,7 +27,7 @@ public class StateAttack : State
     {
         animator.SetBool("isAttack", true);
 
-        Debug.Log("Атака");
+        //Debug.Log("Атака");
     }
 
     public override float Evaluate()
