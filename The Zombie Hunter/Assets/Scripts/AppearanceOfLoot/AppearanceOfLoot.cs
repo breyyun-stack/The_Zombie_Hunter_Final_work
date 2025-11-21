@@ -12,6 +12,7 @@ public class AppearanceOfLoot : MonoBehaviour
 
     private Vector3 newPosition;
     private Vector3 randomDirectionXZ;
+    Vector2 randomUnitVector;
     private float randomDistance;
 
     private Tweener rotationTween;
@@ -24,13 +25,13 @@ public class AppearanceOfLoot : MonoBehaviour
         transform.localScale = Vector3.zero;
 
         newPosition = transform.position;
-        newPosition.x = transform.position.x + randomDistance;
-        newPosition.z = transform.position.z + randomDistance;
+        newPosition.x = transform.position.x + randomUnitVector.x * randomDistance;
+        newPosition.z = transform.position.z + randomUnitVector.y * randomDistance;
 
         transform.DOScale(originalSize, _timeOfAppearance);
         transform.DOMove(newPosition, _timeOfAppearance);
 
-        rotationTween = transform
+        transform
 
             // ¬ращение на 360 за определенное врем€
             .DORotate(Vector3.up * 360, _timeRotate)
@@ -47,12 +48,12 @@ public class AppearanceOfLoot : MonoBehaviour
 
     private void RandomDirectionXZ()
     {
-        // ¬ыбираем случайный вектор в окружности
-        Vector2 randomUnitVector = Random.insideUnitCircle.normalized;
+        // ¬ыбираем случайный вектор в единичной окружности окружности
+        randomUnitVector = Random.insideUnitCircle.normalized;
 
         // ¬ыбираем случайную дистанцию на которой будет по€вл€тс€ лут
         randomDistance = Random.Range(_startRandomDistance, _endRandomDistance);
 
-        randomDirectionXZ = new Vector3(randomUnitVector.x, 0f, randomUnitVector.y);
+        //randomDirectionXZ = new Vector3(randomUnitVector.x, 0f, randomUnitVector.y);
     }
 }

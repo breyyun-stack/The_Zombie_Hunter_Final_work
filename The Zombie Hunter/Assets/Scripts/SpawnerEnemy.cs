@@ -69,8 +69,10 @@ public class SpawnerEnemy : MonoBehaviour
         if (newEnemy == null) return;
 
         // Даем ссылку врагу на пул для возврата
-        newEnemy.GetComponent<EnemyDeath>().MyPool = enemyPool;
-        newEnemy.GetComponent<EnemyDeath>().SpawnerEnemy = this;
+        if (newEnemy.TryGetComponent<IPoolable>(out IPoolable poolable)) poolable.MyPool = enemyPool;
+
+        // Даем ссылку врагу на метод для подсчета сколько погибло врагов за одну волну
+        if (newEnemy.TryGetComponent<ISpawnerEnemy>(out ISpawnerEnemy spawnerEnemy)) spawnerEnemy.SpawnerEnemy = this;
     }
 
     /// <summary>
@@ -87,17 +89,8 @@ public class SpawnerEnemy : MonoBehaviour
             initialPoolSize += waveIncrease;
             theNumberOfEnemiesKilled = 0;
 
-            StartCountdown();
+            StartCoroutine(Countdown());
         }
-    }
-
-    /// <summary>
-    /// Старт таймера
-    /// </summary>
-    public void StartCountdown()
-    {
-        //IsReadyWave = false;
-        StartCoroutine(Countdown());
     }
 
     /// <summary>

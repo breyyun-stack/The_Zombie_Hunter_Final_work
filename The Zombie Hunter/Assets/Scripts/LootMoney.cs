@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public class AddMoney : MonoBehaviour
+public class LootMoney : MonoBehaviour, IPoolable
 {
-    //[SerializeField] private LootType _lootType;
     [SerializeField] private int _amount = 1;
 
     public ObjectPool MyPool { get; set; }

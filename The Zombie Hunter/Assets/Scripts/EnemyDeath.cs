@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyDeath : MonoBehaviour
+public class EnemyDeath : MonoBehaviour, IPoolable, ISpawnerEnemy
 {
     [Header("Точка спавна лута")]
     [SerializeField] private Transform _lootSpawnPoint;
@@ -12,8 +12,6 @@ public class EnemyDeath : MonoBehaviour
 
     public ObjectPool MyPool { get; set; }
     public SpawnerEnemy SpawnerEnemy { get; set; }
-
-    //private bool _firstFrameAfterEnable = false;
 
     void Start()
     {
@@ -31,19 +29,15 @@ public class EnemyDeath : MonoBehaviour
     {
         if (health <= 0)
         {
-            var lootPos = _lootSpawnPoint.position;
+            LootFactory.Spawn(LootType.Coin, _lootSpawnPoint.position, Quaternion.identity);
+            LootFactory.Spawn(LootType.Health, _lootSpawnPoint.position, Quaternion.identity);
 
-            //Debug.Log($"position 1: {transform.position}");
             rb.isKinematic = true;
 
             animator.SetTrigger("isDeath");
 
             stateController.enabled = false;
             colliderEnemy.enabled = false;
-
-            LootFactory.Spawn(LootType.Coin, lootPos, Quaternion.identity);
-
-            //Debug.Log($"position 2: {transform.position}");
 
             Invoke("ReturnPool", 1.5f);
         }

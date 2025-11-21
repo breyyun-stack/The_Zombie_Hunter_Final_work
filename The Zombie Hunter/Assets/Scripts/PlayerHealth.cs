@@ -1,8 +1,10 @@
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour, IPlayerHealth
+public class PlayerHealth : MonoBehaviour, IPlayerHealth, IPoolable
 {
     [SerializeField] int maxHealth = 100;
+
+    public ObjectPool MyPool { get; set; }
 
     private int currentHealth;
 

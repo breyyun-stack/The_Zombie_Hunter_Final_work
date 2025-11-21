@@ -5,12 +5,6 @@ public static class LootFactory
     public static ObjectPool CoinPool;
     public static ObjectPool HealthPool;
 
-    //public enum LootType
-    //{
-    //    Coin,
-    //    Health
-    //}
-
     public static void Initialize(ObjectPool coinPool, ObjectPool healthPool)
     {
         CoinPool = coinPool;
@@ -22,15 +16,6 @@ public static class LootFactory
 
     public static void Spawn(LootType type, Vector3 position, Quaternion rotation = default)
     {
-        //if (rotation == default) rotation = Quaternion.identity;
-
-        //ObjectPool pool = type switch
-        //{
-        //    LootType.Coin => CoinPool,
-        //    LootType.Health => HealthPool,
-        //    _ => null
-        //};
-
         ObjectPool targetPool = null;
 
         switch (type)
@@ -55,15 +40,13 @@ public static class LootFactory
 
         GameObject loot = targetPool.GetPool(position, rotation);
 
-        //loot.GetComponent<AddMoney>().MyPool = targetPool;
-
-        if (loot != null) 
-        {
-            loot.GetComponent<AddMoney>().MyPool = targetPool;
-        }
-        else
-        {
-            Debug.LogWarning($"Пул для {type} пуст! Рассмотрите IncreaseThePool().");
-        }
+        //if (loot != null && loot.TryGetComponent<IPoolable>(out IPoolable myPool)) 
+        //{
+        //    myPool.MyPool = targetPool;
+        //}
+        //else
+        //{
+        //    Debug.LogWarning($"Пул для {type} пуст! Рассмотрите IncreaseThePool().");
+        //}
     }
 }

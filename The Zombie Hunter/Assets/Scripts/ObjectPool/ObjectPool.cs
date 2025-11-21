@@ -36,11 +36,15 @@ public class ObjectPool : MonoBehaviour
     {
         if (pooledObjects.Count == 0) return null;
 
-        GameObject obj;
-
-        obj = pooledObjects.Dequeue();
+        GameObject obj = pooledObjects.Dequeue();
 
         obj.transform.SetPositionAndRotation(position, rotation);
+
+        if (obj.TryGetComponent<IPoolable>(out IPoolable myPool))
+        {
+            myPool.MyPool = this;
+        }
+
         obj.SetActive(true);
 
         return obj;
