@@ -15,8 +15,6 @@ public class AppearanceOfLoot : MonoBehaviour
     Vector2 randomUnitVector;
     private float randomDistance;
 
-    private Tweener rotationTween;
-
     public void OnEnable()
     {
         RandomDirectionXZ();
@@ -46,6 +44,14 @@ public class AppearanceOfLoot : MonoBehaviour
             .SetEase(Ease.Linear);
     }
 
+    private void OnDisable()
+    {
+        transform.DOKill(complete: true);
+    }
+
+    /// <summary>
+    /// Случайная дистанция от врага, на которой будет появлятся лут
+    /// </summary>
     private void RandomDirectionXZ()
     {
         // Выбираем случайный вектор в единичной окружности окружности
@@ -53,7 +59,5 @@ public class AppearanceOfLoot : MonoBehaviour
 
         // Выбираем случайную дистанцию на которой будет появлятся лут
         randomDistance = Random.Range(_startRandomDistance, _endRandomDistance);
-
-        //randomDirectionXZ = new Vector3(randomUnitVector.x, 0f, randomUnitVector.y);
     }
 }

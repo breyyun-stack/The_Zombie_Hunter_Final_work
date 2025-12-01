@@ -8,13 +8,9 @@ public class LootHeal : MonoBehaviour, IPoolable
 
     public ObjectPool MyPool { get; set; }
 
-    private bool returnInPool = false;
-
     private void OnEnable()
     {
         StartCoroutine(ReturnAfterDelay(_timeUntilReturn));
-
-        //TimeUntilReturn(_timeUntilReturn);
     }
 
     private void OnDisable()
