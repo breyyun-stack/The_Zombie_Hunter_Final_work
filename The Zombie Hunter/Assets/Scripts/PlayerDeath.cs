@@ -27,9 +27,9 @@ public class PlayerDeath : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
     }
 
-    private void Death(int health)
+    private void Death(PlayerHealth playerHealth)
     {
-        if (health <= 0)
+        if (playerHealth.CurrentHealth <= 0)
         {
             animator.SetTrigger("isDeath");
 

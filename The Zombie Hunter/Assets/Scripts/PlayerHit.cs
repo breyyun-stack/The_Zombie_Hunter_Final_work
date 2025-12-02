@@ -19,7 +19,7 @@ public class PlayerHit : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void HitPlayer(int health)
+    public void HitPlayer(PlayerHealth playerHealth)
     {
         animator.SetTrigger("isTakeDamage");
     }

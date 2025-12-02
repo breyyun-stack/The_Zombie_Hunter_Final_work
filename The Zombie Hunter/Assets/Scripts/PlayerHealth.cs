@@ -2,39 +2,43 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, IPlayerHealth, IPoolable
 {
-    [SerializeField] int maxHealth = 100;
+    [SerializeField] private float maxHealth = 100;
+
+    public float MaxHealth => maxHealth;
+    public float CurrentHealth => currentHealth;
 
     public ObjectPool MyPool { get; set; }
 
-    private int currentHealth;
+    private float currentHealth;
 
     void Start()
     {
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(int damage)
+    /// <summary>
+    /// Получение урона
+    /// </summary>
+    /// <param name="damage"></param>
+    public void TakeDamage(float damage)
     {
         currentHealth -= damage;
 
         currentHealth = Mathf.Max(currentHealth, 0);
 
-        //if (currentHealth <= 0)
-        //{
-        //    currentHealth = 0;
-        //}
-
-        PlayerHitEvents.PlayerHit(currentHealth);
-
-        Debug.Log($"Жизней осталось: {currentHealth}");
+        PlayerHitEvents.PlayerHit(this);
     }
 
-    public void Heal(int heal)
+    /// <summary>
+    /// Восстановление жизней
+    /// </summary>
+    /// <param name="heal"></param>
+    public void Heal(float heal)
     {
         currentHealth += heal;
 
         currentHealth = Mathf.Min(currentHealth, maxHealth);
 
-        Debug.Log($"+ {heal} к жизни. Теперь жизней {currentHealth}");
+        PlayerHealEvents.PlayerHeal(this);
     }
 }

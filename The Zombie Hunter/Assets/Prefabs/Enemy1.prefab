@@ -7087,7 +7087,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _radius: 3
+  _radius: 4
 --- !u!195 &1430457696238849893
 NavMeshAgent:
   m_ObjectHideFlags: 0

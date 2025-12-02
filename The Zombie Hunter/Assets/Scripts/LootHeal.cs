@@ -28,6 +28,10 @@ public class LootHeal : MonoBehaviour, IPoolable
         }
     }
 
+    /// <summary>
+    /// Время до возврата в пул
+    /// </summary>
+    /// <param name="time"></param>
     private void TimeUntilReturn(float time)
     {
         while (time > 0) 
