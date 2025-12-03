@@ -31,9 +31,5 @@ public class EnemyHealth : MonoBehaviour, IEnemyHealth
         _enemyDeath.Death(currentHealth);
 
         _enemyHit.HitEnemy();
-
-        //EnemyHitEvents.EnemyHit(currentHealth);
-
-        Debug.Log($"Жизней осталось: {currentHealth}");
     }
 }

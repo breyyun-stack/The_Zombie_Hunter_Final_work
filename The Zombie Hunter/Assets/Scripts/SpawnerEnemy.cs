@@ -16,11 +16,15 @@ public class SpawnerEnemy : MonoBehaviour
 
     private int currentPoolSize;
     private int theNumberOfEnemiesKilled;
+    private int allCountEnemiesKilled;
     private int currentWave = 0;
     private int waveIncrease = 2;
 
     private bool IsStartWaveEnemy = true;
     private bool IsReadyWave = true;
+
+    public int AllCountEnemiesKilled => allCountEnemiesKilled;
+    public int CurrentWave => currentWave;
 
     private void Start()
     {
@@ -28,6 +32,7 @@ public class SpawnerEnemy : MonoBehaviour
 
         currentPoolSize = 0;
         theNumberOfEnemiesKilled = 0;
+        allCountEnemiesKilled = 0;
     }
 
     private void Update()
@@ -80,6 +85,8 @@ public class SpawnerEnemy : MonoBehaviour
     /// </summary>
     public void TheNumberOfEnemiesKilled()
     {
+        allCountEnemiesKilled++;
+
         theNumberOfEnemiesKilled++;
 
         if (theNumberOfEnemiesKilled == initialPoolSize)

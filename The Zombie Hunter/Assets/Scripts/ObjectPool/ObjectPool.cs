@@ -8,7 +8,7 @@ public class ObjectPool : MonoBehaviour
 
     private Queue<GameObject> pooledObjects = new Queue<GameObject>();
 
-    private void Awake()
+    private void Start()
     {
         PreloadPool();
     }

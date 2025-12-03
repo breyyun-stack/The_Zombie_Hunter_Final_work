@@ -26,9 +26,5 @@ public class FillHealth : MonoBehaviour
     public void FillHealthCount(PlayerHealth playerHealth)
     {
         _healthCount.fillAmount = playerHealth.CurrentHealth / playerHealth.MaxHealth;
-
-        //Debug.Log($"Жизней осталось {playerHealth.CurrentHealth}");
-
-        //_countHealthText.text = health.CurrentHealth.ToString();
     }
 }

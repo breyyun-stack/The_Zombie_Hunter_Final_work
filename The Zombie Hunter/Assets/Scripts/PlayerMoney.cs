@@ -16,8 +16,6 @@ public class PlayerMoney : MonoBehaviour, IPlayerMoney
     {
         currentMoney += amount;
 
-        Debug.Log($"Количество денег: {currentMoney}");
-
         PlayerCountMoneyEvents.PlayerCountMoney(this);
     }
 }
