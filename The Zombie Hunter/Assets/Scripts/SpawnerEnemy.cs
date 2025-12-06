@@ -37,8 +37,8 @@ public class SpawnerEnemy : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log($"Количество врагов в пуле: {currentPoolSize}");
-        Debug.Log($"Количество убитых врагов: {theNumberOfEnemiesKilled}");
+        //Debug.Log($"Количество врагов в пуле: {currentPoolSize}");
+        //Debug.Log($"Количество убитых врагов: {theNumberOfEnemiesKilled}");
 
         if (IsReadyWave && IsStartWaveEnemy)
         {

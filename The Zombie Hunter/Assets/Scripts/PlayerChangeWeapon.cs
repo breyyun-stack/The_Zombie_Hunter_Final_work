@@ -2,6 +2,13 @@ using UnityEngine;
 
 public class PlayerChangeWeapon : MonoBehaviour
 {
+    [SerializeField] private int _startWeaponIndex = 0;
+
+    private void Start()
+    {
+        PlayerWeaponEvents.InvokeWeaponChanged(_startWeaponIndex);
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1)) PlayerWeaponEvents.InvokeWeaponChanged(0);

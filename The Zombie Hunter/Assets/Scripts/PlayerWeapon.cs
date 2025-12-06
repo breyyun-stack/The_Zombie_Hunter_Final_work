@@ -13,8 +13,6 @@ public class PlayerWeapon : MonoBehaviour
 
     [SerializeField] private Transform[] _firePoints;
 
-    [SerializeField] private int _startWeaponIndex = 0;
-
     [SerializeField] private GameObject[] _weaponViews; // дочерние оружия на сцене
 
     private Animator animator;
@@ -22,13 +20,6 @@ public class PlayerWeapon : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
-
-        ChangeWeapon(_startWeaponIndex);
-    }
-
-    void Start()
-    {
-        Debug.Log($"Количество оружия: {_weaponManagerSO.WeaponCount}");
     }
 
     private void OnEnable()
