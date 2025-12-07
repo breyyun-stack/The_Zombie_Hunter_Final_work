@@ -450,9 +450,9 @@ GameObject:
   m_Component:
   - component: {fileID: 330585546}
   - component: {fileID: 330585545}
-  - component: {fileID: 330585544}
   - component: {fileID: 330585547}
   - component: {fileID: 330585548}
+  - component: {fileID: 330585549}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -460,14 +460,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &330585544
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330585543}
-  m_Enabled: 1
 --- !u!20 &330585545
 Camera:
   m_ObjectHideFlags: 0
@@ -610,6 +602,20 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
+--- !u!114 &330585549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 0}
 --- !u!1001 &333228869
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3371,7 +3377,6 @@ MonoBehaviour:
   - {fileID: 910433877}
   - {fileID: 2057973689}
   - {fileID: 2024797753}
-  _startWeaponIndex: 1
   _weaponViews:
   - {fileID: 1523028675}
   - {fileID: 835017193}
@@ -3390,6 +3395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d67ccef8ac947340ac7a7d35ee1ee21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startWeaponIndex: 0
 --- !u!114 &868411227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7141,7 +7147,7 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -31.51
       objectReference: {fileID: 0}
-    - target: {fileID: 3811182086636266554, guid: 70581cce15085954eae8f1493eb31012, type: 3}
+    - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
@@ -7197,7 +7203,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2170660046193142902, guid: 70581cce15085954eae8f1493eb31012, type: 3}
