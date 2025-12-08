@@ -10,6 +10,7 @@ public class InputData : MonoBehaviour
     public bool isAttack = false;
     public bool isSprint = false;
     public bool isReload = false;
+    public bool isPause = false;
 
     private void Awake()
     {
@@ -35,6 +36,11 @@ public class InputData : MonoBehaviour
         inputActions.Player.Reload.started += OnReloadStarted;
         inputActions.Player.Reload.performed += OnReloadPerformed;
         inputActions.Player.Reload.canceled += OnReloadCanceled;
+
+        // Подписываемся на событие нажатия клавиш ESC (пауза)
+        inputActions.Player.Pause.started += OnPauseStarted;
+        inputActions.Player.Pause.performed += OnPausePerformed;
+        inputActions.Player.Pause.canceled += OnPauseCanceled;
     }
 
     public void OnEnable()
@@ -105,5 +111,20 @@ public class InputData : MonoBehaviour
     public void OnReloadCanceled(InputAction.CallbackContext context)
     {
         isReload = false;
+    }
+
+    public void OnPauseStarted(InputAction.CallbackContext context)
+    {
+
+    }
+
+    public void OnPausePerformed(InputAction.CallbackContext context)
+    {
+        isPause = !isPause;
+    }
+
+    public void OnPauseCanceled(InputAction.CallbackContext context)
+    {
+        
     }
 }

@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: ../FmodProject/TheZombiHunter/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639007065638190091
+  lastModified: 639008027957253000
   FileSizes:
   - Name: Desktop
     Value: 1074
@@ -62,7 +62,7 @@ MonoBehaviour:
   Path: ../FmodProject/TheZombiHunter/Build/Desktop/BackGroundMusic.bank
   Name: BackGroundMusic
   StudioPath: bank:/BackGroundMusic
-  lastModified: 639007065657200069
+  lastModified: 639008027957524510
   FileSizes:
   - Name: Desktop
     Value: 1591520
@@ -91,7 +91,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 4211842192454890919}
   cacheVersion: 131857
-  cacheTime: 639007065657200069
+  cacheTime: 639008027957524510
   SerializableEventsDict:
   - key: event:/BackGroundMusic/BackGroundMusic
     index: 0
@@ -110,7 +110,7 @@ MonoBehaviour:
   Path: ../FmodProject/TheZombiHunter/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639007065638190091
+  lastModified: 639008027957262983
   FileSizes:
   - Name: Desktop
     Value: 850
