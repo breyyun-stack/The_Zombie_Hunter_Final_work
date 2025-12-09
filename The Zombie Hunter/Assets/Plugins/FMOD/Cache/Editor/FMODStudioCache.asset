@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7304936841140511938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Pistol/Pistol
+  m_EditorClassIdentifier: 
+  Path: event:/Pistol/Pistol
+  Guid:
+    Data1: -1874834797
+    Data2: 1268014664
+    Data3: -1442241902
+    Data4: 541713463
+  Banks:
+  - {fileID: -5648580756222593034}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 500
 --- !u!114 &-5648580756222593034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,10 +42,10 @@ MonoBehaviour:
   Path: ../FmodProject/TheZombiHunter/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639008118907785061
+  lastModified: 639009062040144026
   FileSizes:
   - Name: Desktop
-    Value: 1074
+    Value: 284032
   Exists: 1
 --- !u!114 &-3270305602058513116
 MonoBehaviour:
@@ -62,7 +89,7 @@ MonoBehaviour:
   Path: ../FmodProject/TheZombiHunter/Build/Desktop/BackGroundMusic.bank
   Name: BackGroundMusic
   StudioPath: bank:/BackGroundMusic
-  lastModified: 639008118907785061
+  lastModified: 639009062033059501
   FileSizes:
   - Name: Desktop
     Value: 1591520
@@ -85,16 +112,19 @@ MonoBehaviour:
   - {fileID: -3046296896821918447}
   EditorEvents:
   - {fileID: -3270305602058513116}
+  - {fileID: -7304936841140511938}
   EditorParameters: []
   MasterBanks:
   - {fileID: -5648580756222593034}
   StringsBanks:
   - {fileID: 4211842192454890919}
   cacheVersion: 131857
-  cacheTime: 639008118907785061
+  cacheTime: 639009062040144026
   SerializableEventsDict:
   - key: event:/BackGroundMusic/BackGroundMusic
     index: 0
+  - key: event:/Pistol/Pistol
+    index: 1
 --- !u!114 &4211842192454890919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,8 +140,8 @@ MonoBehaviour:
   Path: ../FmodProject/TheZombiHunter/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639008118907785061
+  lastModified: 639009062040144026
   FileSizes:
   - Name: Desktop
-    Value: 850
+    Value: 906
   Exists: 1
