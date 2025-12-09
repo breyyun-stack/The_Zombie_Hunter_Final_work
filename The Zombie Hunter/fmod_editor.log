@@ -46,3 +46,4 @@
 [LOG] SoundI::release                          : 01664 (00000259C5691368)
 [LOG] SoundI::release                          :     01664 (00000259C1FA7248)
 [LOG] SoundI::release                          :     01664 (00000259C56914F8)
+[ERR] ~Global                                  : assertion: 'gSystemInitCount == 0' failed
