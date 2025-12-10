@@ -27,6 +27,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 500
+--- !u!114 &-7008516476432515746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/duplet/duplet1
+  m_EditorClassIdentifier: 
+  Path: event:/duplet/duplet1
+  Guid:
+    Data1: 1858242618
+    Data2: 1200307467
+    Data3: 115669691
+    Data4: 843242936
+  Banks:
+  - {fileID: -5648580756222593034}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1016
 --- !u!114 &-5648580756222593034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42,10 +69,10 @@ MonoBehaviour:
   Path: ../FmodProject/TheZombiHunter/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639009064889368985
+  lastModified: 639009879701003882
   FileSizes:
   - Name: Desktop
-    Value: 284032
+    Value: 294592
   Exists: 1
 --- !u!114 &-3270305602058513116
 MonoBehaviour:
@@ -113,18 +140,21 @@ MonoBehaviour:
   EditorEvents:
   - {fileID: -3270305602058513116}
   - {fileID: -7304936841140511938}
+  - {fileID: -7008516476432515746}
   EditorParameters: []
   MasterBanks:
   - {fileID: -5648580756222593034}
   StringsBanks:
   - {fileID: 4211842192454890919}
   cacheVersion: 131857
-  cacheTime: 639009064889374341
+  cacheTime: 639009879701014194
   SerializableEventsDict:
   - key: event:/BackGroundMusic/BackGroundMusic
     index: 0
   - key: event:/Pistol/Pistol
     index: 1
+  - key: event:/duplet/duplet1
+    index: 2
 --- !u!114 &4211842192454890919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,8 +170,8 @@ MonoBehaviour:
   Path: ../FmodProject/TheZombiHunter/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639009064889374341
+  lastModified: 639009879701014194
   FileSizes:
   - Name: Desktop
-    Value: 906
+    Value: 952
   Exists: 1
